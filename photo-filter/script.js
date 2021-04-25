@@ -48,3 +48,33 @@ fileInput.addEventListener('change', function(e) {
   
   reader.readAsDataURL(file);
 });
+
+// When pressed Save button
+const saveBtn = document.querySelector('.btn-save');
+
+saveBtn.addEventListener('click', () => {
+  const blur = document.querySelector('input[name=blur'),
+        invert = document.querySelector('input[name=invert'),
+        sepia = document.querySelector('input[name=sepia'),
+        saturate = document.querySelector('input[name=saturate'),
+        hueRotate = document.querySelector('input[name=hue');
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const image = document.querySelector('img');
+
+  canvas.width = 1600;
+  canvas.height = 900;
+
+  ctx.filter = `blur(${blur.value}px) invert(${invert.value}%) sepia(${sepia.value}%) saturate(${saturate.value}%) hue-rotate(${hueRotate.value}deg)`;
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  const a = document.createElement('a');
+  const dataURL = canvas.toDataURL("image/jpeg");
+  
+  a.href = dataURL;
+  a.download = 'download.jpg';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+})
