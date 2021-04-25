@@ -73,8 +73,30 @@ saveBtn.addEventListener('click', () => {
   const dataURL = canvas.toDataURL("image/jpeg");
   
   a.href = dataURL;
-  a.download = 'download.jpg';
+  a.download = 'download.png';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 })
+
+// Fullscreen API
+const btnFullscreen = document.querySelector('.fullscreen');
+
+const getFullscreenElement = function () {
+  return document.fullscreenElement  // for Chrome
+      || document.webkitFullscreenElement // for Opera
+      || document.mozFullscreenElement // for Mozilla
+      || document.msFullscreenElement   // for IE or Edge
+}
+
+const toggleFullscreen = function () {
+  if (getFullscreenElement()) {
+      document.exitFullscreen();
+  } else {
+      document.documentElement.requestFullscreen().catch(console.log)
+  }
+}
+
+btnFullscreen.addEventListener('click', e => {
+  toggleFullscreen();
+});
