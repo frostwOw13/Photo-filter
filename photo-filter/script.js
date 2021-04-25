@@ -27,4 +27,24 @@ resetBtn.addEventListener('click', (e) => {
   });
 })
 
-// When pressed Next Picture Button
+// TODO: When pressed Next Picture Button
+
+// When pressed Load button
+const fileInput = document.querySelector('input[type="file"]');
+const imageContainer = document.querySelector('.editor');
+
+fileInput.addEventListener('change', function(e) {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+  
+  reader.onload = () => {
+    const img = new Image();
+    img.src = reader.result;
+    img.onload = () => {
+      document.querySelectorAll('img').forEach((image) => image.remove());
+      imageContainer.append(img);
+    };
+  }
+  
+  reader.readAsDataURL(file);
+});
