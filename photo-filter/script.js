@@ -92,8 +92,10 @@ fileInput.addEventListener('change', function(e) {
       imageContainer.append(img);
     };
   }
-  
-  reader.readAsDataURL(file);
+  if (file) {
+    reader.readAsDataURL(file);
+    fileInput.value = null;
+  }
 });
 
 // When pressed Save button
