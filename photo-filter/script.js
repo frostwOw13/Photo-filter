@@ -10,9 +10,9 @@ inputs.addEventListener('input', (e) => {
 
 // When pressed Reset button
 const resetBtn = document.querySelector('.btn-reset');
-const inputsArr = document.querySelectorAll('.filters input')
+const inputsArr = document.querySelectorAll('.filters input');
 
-resetBtn.addEventListener('click', (e) => {
+resetBtn.addEventListener('click', () => {
   inputsArr.forEach((input) => {
     const suffix = input.dataset.sizing;
     if (input.name == 'saturate') {
@@ -27,7 +27,54 @@ resetBtn.addEventListener('click', (e) => {
   });
 })
 
-// TODO: When pressed Next Picture Button
+// When pressed Next Picture Button
+const nextBtn = document.querySelector('.btn-next');
+let imageCount = 1;
+
+function addZero(number) {
+  return (number < 10) ? '0' + number : number;
+}
+
+function newCircle(number) {
+  if (number > 20) imageCount = 1;
+}
+
+function createNewImage(src) {
+  const img = new Image();
+  
+  img.crossOrigin = "Anonymous";
+  img.src = src;
+  img.onload = () => {
+    document.querySelectorAll('img').forEach((image) => image.remove());
+    imageContainer.append(img);
+  };
+}
+
+nextBtn.addEventListener('click', () => {
+  const time = new Date().getHours();
+  
+  if (time >= 6 && time < 12) {
+    newCircle(imageCount);
+    createNewImage(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/${addZero(imageCount)}.jpg`);
+    imageCount++;
+  }
+  else if (time >= 12 && time < 18) {
+    newCircle(imageCount);
+    createNewImage(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/${addZero(imageCount)}.jpg`);
+    imageCount++;
+  }
+  else if (time >= 18 && time < 24) {
+    newCircle(imageCount);
+    createNewImage(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/${addZero(imageCount)}.jpg`);
+    imageCount++;
+  }
+
+  else {
+    newCircle(imageCount);
+    createNewImage(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/${addZero(imageCount)}.jpg`);
+    imageCount++;
+  }
+});
 
 // When pressed Load button
 const fileInput = document.querySelector('input[type="file"]');
