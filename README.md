@@ -22,8 +22,7 @@ This app can add css filter to the image and save the image with the filters app
    * `Save picture` button to download the image along with the added filters to your computer
 3. There is a Fullscreen button, when you click on it, you can expand the application to full screen.
 
-<img src='https://media.giphy.com/media/Bn6w1BPsTwwPRpGHZq/giphy.gif' style="float: left; margin-right: 30px;" width="415"> <img src='https://media.giphy.com/media/oyU1usSOV37p3aHsY1/giphy.gif' style="float: left; margin-left: 30px;" width="415">
-<img src='https://media.giphy.com/media/FgGuGhjrFVsWynyNtB/giphy.gif' style="float: left; margin-left: 30px;" width="415"> <img src='https://media.giphy.com/media/A7I2c0JpGjh7jG2qlE/giphy.gif' style="float: left; margin-left: 30px;" width="415">
+<img src='https://media.giphy.com/media/XCAjQ5Qmqgi52px3VV/giphy.gif' style="float: left; margin-right: 30px;" width="415"> <img src='https://media.giphy.com/media/eFw16VnORyHItGGKIt/giphy.gif' style="float: left; margin-left: 30px;" width="415">
 
 ## Tools and skills
 1. Javascript
